@@ -1,0 +1,9 @@
+{% for order in orders %}
+<div class="card" style="width: 18rem;">
+  <div class="card-body">
+    <h5 class="card-title">{{ order.product.productname }}</h5>
+    <p class="card-text">Quantity: {{ order.quantity }}</p>
+    <p class="card-text">Ordered on: {{ order.ordered_date }}</p>
+  </div>
+</div>
+{% endfor %}

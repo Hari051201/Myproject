@@ -1,0 +1,23 @@
+<h1>Checkout</h1>
+
+<form method="post">
+    {% csrf_token %}
+    <h2>Your Cart</h2>
+    <ul>
+        {% for item in cart %}
+        <li>{{ item.product.productname }} - {{ item.quantity }} x {{ item.product.price }} = {{ item.quantity|multiply:item.product.price }}</li>
+        {% endfor %}
+    </ul>
+    
+    <h3>Total: {{ total }}</h3>
+    
+    <label for="coupon">Coupon Code:</label>
+    <input type="text" name="coupon" id="coupon">
+    
+    {% if discount %}
+    <p>Discount Applied: {{ discount }}</p>
+    <h4>Total After Discount: {{ total_after_discount }}</h4>
+    {% endif %}
+    
+    <button type="submit">Place Order</button>
+</form>
